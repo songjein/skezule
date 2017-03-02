@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'list',
+    selector: 'stat',
     template: `
 			<h3>성취율: <span style="color:red">82%</span></h3>
 			

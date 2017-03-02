@@ -9,6 +9,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { FormComponent } from "./components/form/form.component";
 import { ListComponent } from "./components/list/list.component";
 import { StatComponent } from "./components/stat/stat.component";
+import { CompleteComponent } from "./components/complete/complete.component";
 import { routing } from "./routes";
 
 /**
@@ -19,7 +20,9 @@ import {
 	CheckboxModule,
 	ButtonModule,
 	CalendarModule,
-	ChartModule
+	ChartModule,
+	DialogModule,
+	InputTextareaModule,
 } from 'primeng/primeng';
 
 @NgModule({
@@ -33,7 +36,9 @@ import {
 			CheckboxModule,
 			ButtonModule,
 			CalendarModule,
-			ChartModule
+			ChartModule,
+			DialogModule,
+			InputTextareaModule,
     ],
     declarations: [
         AppComponent,
@@ -42,6 +47,7 @@ import {
 				FormComponent,
 				ListComponent,
 				StatComponent,
+				CompleteComponent
     ],
     bootstrap: [ AppComponent ]
 })
