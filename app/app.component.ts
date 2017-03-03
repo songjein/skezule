@@ -20,11 +20,22 @@ import { Component } from '@angular/core';
 				padding: 0 10px;
 				z-index: 1000;
 			}
+
+			#chart {
+				margin: 10px 20px;
+				font-size: 30px;
+				color: skyblue;
+				float:right;
+			}
 		`],
     template: `
 			<!-- title & add menu-->
 			<div id="nav">
 				<a id="title" [routerLink]="['/']">Skezule.me</a>
+
+				<a id="chart" [routerLink]="['/stat']">
+					<i class="fa fa-pie-chart" aria-hidden="true"></i>
+				</a>
 			</div>
 			<div style="clear:both"></div>
 

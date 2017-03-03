@@ -23,7 +23,7 @@ import 'rxjs/add/operator/switchMap';
 export class CompleteComponent implements OnInit {
 
 	@Input()
-	selectedId: integer;
+	selectedId: number;
 
 	finishlog: string;
 

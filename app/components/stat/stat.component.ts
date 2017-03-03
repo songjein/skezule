@@ -26,7 +26,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class StatComponent implements OnInit {
-	achieve: integer;
+	achieve: number;
 
 	data: any;
 	data2: any;
@@ -75,7 +75,7 @@ export class StatComponent implements OnInit {
 		const tmp = this.achieve;
 		this.achieve = 0;
 
-		const iid:integer = setInterval(()=>{
+		const iid:number= setInterval(()=>{
 			this.achieve ++;	
 			if (this.achieve == tmp){
 				clearInterval(iid);	

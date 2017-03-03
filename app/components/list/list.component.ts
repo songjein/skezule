@@ -5,33 +5,18 @@ import { Router } from '@angular/router';
     selector: 'list',
     template: `
 			<div *ngFor="let todo of todos" style="margin-bottom:10px;" >
-				<p-checkbox  class="todo" name="todolist" value="{{todo.goal}}" label="{{todo.goal}}" (onChange)="gotoFinsh(todo.id)" [(ngModel)]="selectedItem">abc</p-checkbox>
+				<p-checkbox  class="todo" name="todolist" value="{{todo.goal}}" label="{{todo.goal}}" (onChange)="gotoFinish(todo.id)" [(ngModel)]="selectedItem">abc</p-checkbox>
 			</div>
 			
 			<div style="height:10px;"></div>
 
-			<a [routerLink]="['/form']" style="margin-left: 10px;">
-				<div class="icon">
+			<a [routerLink]="['/form']">
+				<div class="btn">
 						+ 
-				</div>
-			</a>  
-
-			<a [routerLink]="['/stat']" style="margin-left: 10px;">
-				<div class="icon">
-					<i class="fa fa-bar-chart" aria-hidden="true"></i>
 				</div>
 			</a>  
 		`,
     styles: [`
-			.icon {
-				border-radius: 5px;
-				border: 1px solid gray;
-				font-size: 2em;
-				max-width: 400px;
-				text-align: center;
-				color: gray;
-				margin: 5px 0 ;
-			}
 		`]
 })
 export class ListComponent {
@@ -59,7 +44,7 @@ export class ListComponent {
 		alert('제출');	
 	}
 
-	gotoFinsh(id: integer){
+	gotoFinish(id: number){
 		this.router.navigate(['/complete', id]);
 	}
 }
