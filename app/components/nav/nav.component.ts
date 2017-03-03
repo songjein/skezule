@@ -83,7 +83,7 @@ import { Component } from '@angular/core';
 						<span class="menu-item-label">통계</span>
 					</div>
 				</a>
-				<a [routerLink]="['/list']" (click)="showMenu()">
+				<a [routerLink]="['/user']" (click)="showMenu()">
 					<div class="menu-row" style="background: rgba(230,230,230, 0.9); color:rgb(50,50,50);"> 
 						<i class="fa fa-user-o menu-item" aria-hidden="true" ></i>
 						<span class="menu-item-label">개인정보</span>

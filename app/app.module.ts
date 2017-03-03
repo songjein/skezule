@@ -11,6 +11,7 @@ import { ListComponent } from "./components/list/list.component";
 import { StatComponent } from "./components/stat/stat.component";
 import { CompleteComponent } from "./components/complete/complete.component";
 import { NavComponent } from "./components/nav/nav.component";
+import { UserComponent } from "./components/user/user.component";
 import { routing } from "./routes";
 
 /**
@@ -49,7 +50,8 @@ import {
 				ListComponent,
 				StatComponent,
 				CompleteComponent,
-				NavComponent
+				NavComponent,
+				UserComponent,
     ],
     bootstrap: [ AppComponent ]
 })

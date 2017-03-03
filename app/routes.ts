@@ -6,6 +6,7 @@ import { FormComponent } from './components/form/form.component';
 import { ListComponent } from './components/list/list.component';
 import { StatComponent } from './components/stat/stat.component';
 import { CompleteComponent } from './components/complete/complete.component';
+import { UserComponent } from './components/user/user.component';
 
 export const routes: Route[] = [
     { path: '', pathMatch: 'full', component: ListComponent},
@@ -14,6 +15,7 @@ export const routes: Route[] = [
     { path: 'list', component: ListComponent },
     { path: 'stat', component: StatComponent },
     { path: 'complete/:id', component: CompleteComponent },
+    { path: 'user', component: UserComponent },
 ];
 
 export const routing = RouterModule.forRoot(routes, { useHash: true });
