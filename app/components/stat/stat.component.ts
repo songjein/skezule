@@ -75,8 +75,9 @@ export class StatComponent implements OnInit {
 		this.achieve = 0;
 
 		const iid:number= setInterval(()=>{
-			this.achieve ++;	
-			if (this.achieve == tmp){
+			this.achieve += 3;	
+			if (this.achieve >= tmp){
+				this.achieve = tmp;	
 				clearInterval(iid);	
 			}
 		}, 10);

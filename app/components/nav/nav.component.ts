@@ -72,19 +72,19 @@ import { Component } from '@angular/core';
 			
 			<div id="menu">
 				<a [routerLink]="['/']" (click)="showMenu()">
-					<div class="menu-row" style="background: rgba(250,250,250, 0.9); color:gray;"> 
+					<div class="menu-row" style="background: rgba(250,250,250, 0.9); color:rgb(50,50,50);"> 
 						<i class="fa fa-check-square-o menu-item" aria-hidden="true" ></i>
 						<span class="menu-item-label">히스토리</span>
 					</div>
 				</a>
 				<a [routerLink]="['/stat']" (click)="showMenu()">
-					<div class="menu-row" style="background: rgba(200,200,200, 0.9); color:rgb(50,50,50)"> 
+					<div class="menu-row" style="background: rgba(240,240,240, 0.9); color:rgb(50,50,50)"> 
 						<i class="fa fa-pie-chart menu-item" aria-hidden="true" ></i>
 						<span class="menu-item-label">통계</span>
 					</div>
 				</a>
 				<a [routerLink]="['/list']" (click)="showMenu()">
-					<div class="menu-row" style="background: rgba(150,150,150, 0.9); color:white;"> 
+					<div class="menu-row" style="background: rgba(230,230,230, 0.9); color:rgb(50,50,50);"> 
 						<i class="fa fa-user-o menu-item" aria-hidden="true" ></i>
 						<span class="menu-item-label">개인정보</span>
 					</div>
