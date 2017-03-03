@@ -10,15 +10,27 @@ import { Component } from '@angular/core';
 				float:left;
 			}
 
+			#nav {
+				position: fixed;
+				top: 0;
+				left: 0;
+				background: rgba(240,240,240, 0.5);
+				width: 100%;
+				height: 50px;
+				padding: 0 10px;
+				z-index: 1000;
+			}
 		`],
     template: `
 			<!-- title & add menu-->
-			<div>
+			<div id="nav">
 				<a id="title" [routerLink]="['/']">Skezule.me</a>
 			</div>
 			<div style="clear:both"></div>
 
-			<router-outlet></router-outlet>
+			<div style="padding: 0 10px">
+				<router-outlet></router-outlet>
+			</div>
 
 			<!--<a [routerLink]="['/about/', { id: 2 }]">About</a>-->
 		`,
