@@ -21,11 +21,38 @@ import { Component } from '@angular/core';
 				z-index: 1000;
 			}
 
-			#chart {
+			#menu {
+				position: fixed;
+				top: 50;
+				left: 0;
+				background: rgba(100,100,100, 0.9);
+				width: 100%;
+				height: 50px;
+				z-index: 1000;
+				display: none;
+			}
+			.menu-item{
+				font-size: 30px;	
+				margin:10px 7px;
+				float: right;
+				color: white;
+			}
+
+			.menu-item-most-right{
+				margin:10px 1.5px;
+				float: right;
+				color: white;
+			}
+
+			#menu-nav-item {
 				margin: 10px 20px;
 				font-size: 30px;
-				color: skyblue;
 				float:right;
+				cursor: pointer;
+			}
+
+			.ui-dialog {
+				top: 60px !important;
 			}
 		`],
     template: `
@@ -33,10 +60,24 @@ import { Component } from '@angular/core';
 			<div id="nav">
 				<a id="title" [routerLink]="['/']">Skezule.me</a>
 
-				<a id="chart" [routerLink]="['/stat']">
-					<i class="fa fa-pie-chart" aria-hidden="true"></i>
+				<span id="menu-nav-item" (click)="showMenu()">
+					<i class="fa fa-bars" aria-hidden="true"></i>
+				</span>
+			</div>
+			
+			<div id="menu">
+				<span class="menu-item-most-right"></span>
+				<a [routerLink]="['/list']">
+					<i class="fa fa-user-o menu-item" aria-hidden="true" (click)="showMenu()"></i>
+				</a>
+				<a [routerLink]="['/stat']">
+					<i class="fa fa-pie-chart menu-item" aria-hidden="true" (click)="showMenu()"></i>
+				</a>
+				<a [routerLink]="['/']">
+					<i class="fa fa-check-square-o menu-item" aria-hidden="true" (click)="showMenu()"></i>
 				</a>
 			</div>
+
 			<div style="clear:both"></div>
 
 			<div style="padding: 0 10px">
@@ -47,4 +88,12 @@ import { Component } from '@angular/core';
 		`,
 })
 export class AppComponent {
+
+	showMenu(){
+		let elem = document.getElementById("menu")
+		if (elem.style.display == "block")
+			elem.style.display = "";
+		else 
+			elem.style.display = "block";
+	}
 }

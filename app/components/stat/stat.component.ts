@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core'; import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'stat',
@@ -52,7 +51,7 @@ export class StatComponent implements OnInit {
 		}	
 
 		this.data2 = {
-				labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+				labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
 				datasets: [
 						{
 								label: '등록',

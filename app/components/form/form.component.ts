@@ -20,7 +20,7 @@ import { ActivatedRoute } from '@angular/router';
 			<br>
 
 			<a [routerLink]="['/stat']">
-				<div class="btn" (click)="onclick()">
+				<div class="btn" (click)="onclick()" style="padding: 5px 0;">
 					<span style="font-size: 0.7em; font-weight:bold;">등록</span>
 				</div>
 			</a>  
