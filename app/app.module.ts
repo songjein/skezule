@@ -10,6 +10,7 @@ import { FormComponent } from "./components/form/form.component";
 import { ListComponent } from "./components/list/list.component";
 import { StatComponent } from "./components/stat/stat.component";
 import { CompleteComponent } from "./components/complete/complete.component";
+import { NavComponent } from "./components/nav/nav.component";
 import { routing } from "./routes";
 
 /**
@@ -47,7 +48,8 @@ import {
 				FormComponent,
 				ListComponent,
 				StatComponent,
-				CompleteComponent
+				CompleteComponent,
+				NavComponent
     ],
     bootstrap: [ AppComponent ]
 })
