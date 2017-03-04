@@ -10,11 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 			<div class="label">태그</div>
 			<input type="text" pInputText [(ngModel)]="tags" size="30"/>
 
-			<div class="label">시작일 <span style="color:black">{{from|date}}</span> </div>
-			<p-calendar [(ngModel)]="from" [inline]="true" [locale]="kr"></p-calendar> 
+			<div class="label">시작일</div>
+			<p-calendar [(ngModel)]="from" [locale]="kr" [showIcon]="true" readonlyInput="true"></p-calendar> 
 
-			<div class="label">완료일 <span style="color:black">{{to|date}}</span> </div>
-			<p-calendar [(ngModel)]="to" [inline]="true" [locale]="kr"></p-calendar> 
+			<div class="label">완료일</div>
+			<p-calendar [(ngModel)]="to" [locale]="kr" [showIcon]="true" readonlyInput="true"></p-calendar> 
 			
 			<br>
 			<br>
