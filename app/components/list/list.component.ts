@@ -10,11 +10,10 @@ import { Router } from '@angular/router';
 			
 			<div style="height:10px;"></div>
 
-			<a [routerLink]="['/form']">
-				<div class="btn">
-						+ 
-				</div>
+			<a [routerLink]="['/form']" style="color:rgb(150,150,150);margin-left:5px;">
+				<b>+</b> 작업추가
 			</a>  
+
 		`,
     styles: [`
 		`]
