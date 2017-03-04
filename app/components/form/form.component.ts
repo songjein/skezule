@@ -7,8 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 			<div class="label">목표</div>
 			<input type="text" pInputText [(ngModel)]="todo" size="30" />
 
-			<div class="label">태그</div>
-			<input type="text" pInputText [(ngModel)]="tags" size="30"/>
+			<div class="label">카테고리</div>
+			<input type="text" pInputText [(ngModel)]="category" size="30"/>
 
 			<div class="label">시작일</div>
 			<p-calendar [(ngModel)]="from" [locale]="kr" [showIcon]="true" readonlyInput="true"></p-calendar> 
@@ -19,11 +19,7 @@ import { ActivatedRoute } from '@angular/router';
 			<br>
 			<br>
 
-			<a [routerLink]="['/stat']">
-				<div class="btn" (click)="onclick()" style="padding: 5px 0;">
-					<span style="font-size: 0.7em; font-weight:bold;">등록</span>
-				</div>
-			</a>  
+			<button pButton type="button" label="작업 추가" class="ui-button-secondary"></button>
 
 			<a [routerLink]="['/form']" style="color:rgb(150,150,150);margin-left:5px;">
 
@@ -41,7 +37,7 @@ export class FormComponent {
 	from: Date;
 	to: Date;
 	todo: string;
-	tags: string;
+	category: string;
 
 	kr: any;
 

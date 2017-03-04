@@ -4,14 +4,30 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'list',
     template: `
-			<div *ngFor="let todo of todos" style="margin-bottom:10px;" >
-				<p-checkbox  class="todo" name="todolist" value="{{todo.goal}}" label="{{todo.goal}}" (onChange)="gotoFinish(todo.id)" [(ngModel)]="selectedItem">abc</p-checkbox>
+			<div style="height:5px;"></div>
+
+			<div style="color:rgb(150,150,150);">
+				오늘 할일
 			</div>
-			
+
 			<div style="height:10px;"></div>
 
+			<div *ngFor="let todo of todos" style="margin-bottom:10px;" >
+				<p-checkbox  class="todo" name="todolist" value="{{todo.goal}}" label="{{todo.goal}}" [(ngModel)]="selectedItem">abc</p-checkbox>
+			</div>
+			
+			<div style="height:5px;"></div>
+
 			<a [routerLink]="['/form']" style="color:rgb(150,150,150);margin-left:5px;">
-				<b>+</b> 작업추가
+				<b>+</b> 작업 추가
+			</a>  
+
+			<div style="height:10px;"></div>
+
+			<a [routerLink]="['/form']" style="color:rgb(255,144,0);margin-left:5px;">
+				빠른 완료 
+				<b style="color:rgb(150,150,150);">/</b> 
+				로그와 함께 완료 
 			</a>  
 
 		`,

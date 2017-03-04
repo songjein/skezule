@@ -3,16 +3,26 @@ import { Component, Input, OnInit } from '@angular/core'; import { ActivatedRout
 @Component({
     selector: 'stat',
     template: `
-			<h3>성취율: <span style="color:red">{{achieve}}%</span></h3>
+
+			<div style="color:black;">
+				성취율 : <b style="color:red">{{achieve}}%</b>
+			</div>
+
+			<div style="height:10px"></div>
 			
-			<h4>사용 태그</h4>
+			<div style="color:rgb(150,150,150);">
+				사용 태그
+			</div>
 			<div style="max-width: 400px">
 				<p-chart type="pie" [data]="data"></p-chart>
 			</div>
 
 			<div style="height:20px"></div>
 
-			<h4>등록 대비 완료횟수</h4>
+			<div style="color:rgb(150,150,150); margin-bottom:5px;">
+				등록 대비 완료횟수
+			</div>
+
 			<div style="max-width: 400px">
 				<p-chart type="line" [data]="data2" (onDataSelect)="selectData($event)"></p-chart>
 			</div>
