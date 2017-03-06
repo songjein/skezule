@@ -7,8 +7,7 @@ import 'rxjs/add/operator/switchMap';
     selector: 'complete',
     template: `
 			<h4>목표</h4>
-
-			{{selectedId}} (id로 실제 데이터 얻어올것임)
+			{{selectedItems}} 
 
 			<h4>기록</h4>
 			<textarea pInputTextarea [(ngModel)]="finishlog" rows="5" style="width:300px"></textarea>
@@ -23,7 +22,7 @@ import 'rxjs/add/operator/switchMap';
 export class CompleteComponent implements OnInit {
 
 	@Input()
-	selectedId: number;
+	selectedItems: string[];
 
 	finishlog: string;
 
@@ -36,12 +35,7 @@ export class CompleteComponent implements OnInit {
 	}
 	
 	ngOnInit(): void {
-		this.route.params
-			.switchMap((params: Params) => {
-					console.log(params['id'])
-					this.selectedId = params['id'];
-				})
-			//.subscribe(id => this.selectedId = id);
-			//.switchMap((params: Params) => this.heroService.getHero(+params['id']))
+		const sep = "#$%#$%"
+		this.selectedItems = this.route.snapshot.params["selectedItems"].split(sep);
 	}
 }

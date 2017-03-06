@@ -14,7 +14,7 @@ export const routes: Route[] = [
     { path: 'form', component: FormComponent },
     { path: 'list', component: ListComponent },
     { path: 'stat', component: StatComponent },
-    { path: 'complete/:id', component: CompleteComponent },
+    { path: 'complete/:selectedItems', component: CompleteComponent },
     { path: 'user', component: UserComponent },
 ];
 
