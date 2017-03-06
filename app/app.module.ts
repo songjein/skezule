@@ -4,15 +4,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
-import { AboutComponent } from "./components/about/about.component";
-import { HomeComponent } from "./components/home/home.component";
+import { routing } from "./routes";
+
 import { FormComponent } from "./components/form/form.component";
 import { ListComponent } from "./components/list/list.component";
 import { StatComponent } from "./components/stat/stat.component";
 import { CompleteComponent } from "./components/complete/complete.component";
 import { NavComponent } from "./components/nav/nav.component";
 import { UserComponent } from "./components/user/user.component";
-import { routing } from "./routes";
+
+import { ApiService } from './services/api/api.service';
+
 
 /**
  * primeng
@@ -44,8 +46,6 @@ import {
     ],
     declarations: [
         AppComponent,
-        AboutComponent,
-        HomeComponent,
 				FormComponent,
 				ListComponent,
 				StatComponent,
@@ -53,6 +53,10 @@ import {
 				NavComponent,
 				UserComponent,
     ],
+
+		providers: [
+			ApiService	
+		],
     bootstrap: [ AppComponent ]
 })
 export class AppModule { }

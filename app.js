@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 
-var users = require('./routes/users');
+var api = require('./routes/api');
 var app = express();
 
 const options = {
@@ -33,7 +33,7 @@ app.use('/node_modules', express.static(__dirname + '/node_modules'));
 
 // Routes registration
 // ---
-app.use('/users', users);
+app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

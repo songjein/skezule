@@ -1,5 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { ApiService } from '../../services/api/api.service'; 
+
+import { Todo } from '../../todo';
 
 @Component({
     selector: 'list',
@@ -36,12 +40,14 @@ import { Router } from '@angular/router';
     styles: [`
 		`]
 })
-export class ListComponent {
+export class ListComponent implements OnInit {
 
 	selectedItems: string[] = [];
 
 	finishlog: string;
 
+	todos: Todo[];
+	/*
 	todos: any[] = [
 		{id: 1, goal: "[코딩] Feeld 개발 (contents controllbar.. )"},
 		{id: 2, goal: "[운동] 머리 가슴 배 3세트"},
@@ -52,9 +58,11 @@ export class ListComponent {
 		{id: 7, goal: "[독서] 수학이 좋아지는 수학 읽기"},
 		{id: 8, goal: "[영어] 영어 공부 1회"},
 	];
+	*/
 
 	constructor(
-		private router: Router
+		private router: Router,
+		private apiService: ApiService
 	){}
 
 	onClick(){
@@ -67,7 +75,7 @@ export class ListComponent {
 			return;
 		}
 		const sep = "#$%#$%"
-		this.router.navigate(['/complete', this.selectedItems.join(sep);
+		this.router.navigate(['/complete', this.selectedItems.join(sep)]);
 	}
 
 	finishSimple(){
@@ -76,5 +84,13 @@ export class ListComponent {
 			return;
 		}
 		alert("완료");	
+	}
+
+	getTodos(): void {
+		this.apiService.getTodos().then(todos => this.todos = todos);
+	}
+
+	ngOnInit(): void {
+		this.getTodos();			
 	}
 }
