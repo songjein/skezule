@@ -1,27 +1,27 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+
+import { ApiService } from '../../services/api/api.service'; 
 
 @Component({
     selector: 'form',
     template: `
 			<div class="label">목표</div>
-			<input type="text" pInputText [(ngModel)]="todo" size="30" />
+			<input type="text" pInputText [(ngModel)]="goal" size="30" />
 
 			<div class="label">카테고리</div>
 			<input type="text" pInputText [(ngModel)]="category" size="30"/>
 
-			<div class="label">시작일</div>
+			<div class="label">날짜</div>
 			<p-calendar [(ngModel)]="from" [locale]="kr" [showIcon]="true" readonlyInput="true"></p-calendar> 
 
-			<div class="label">완료일</div>
+			<div class="label">반복 날짜(옵션)</div>
 			<p-calendar [(ngModel)]="to" [locale]="kr" [showIcon]="true" readonlyInput="true"></p-calendar> 
 			
 			<br>
 			<br>
 
-			<button pButton type="button" label="작업 추가" class="ui-button-secondary"></button>
-
-			<a [routerLink]="['/form']" style="color:rgb(150,150,150);margin-left:5px;">
+			<button pButton type="button" label="작업 추가" class="ui-button-secondary" (click)="onclick()" ></button>
 
 		`,
     //styleUrls: ['components/form/form.component.css']
@@ -36,13 +36,20 @@ import { ActivatedRoute } from '@angular/router';
 export class FormComponent {
 	from: Date;
 	to: Date;
-	todo: string;
+	goal: string;
 	category: string;
 
 	kr: any;
 
+	constructor(
+		private apiService: ApiService,
+		private router: Router
+	){}
+
 	onclick(){
-		alert('제출');	
+		//console.log(this.from.getFullYear(), this.to, this.goal, this.category);	
+		this.apiService.createTodo(this.goal, this.from, this.to);
+		this.router.navigate(['/']);
 	}
 
 	ngOnInit(){
@@ -54,5 +61,9 @@ export class FormComponent {
 			monthNames: [ "1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월" ],
 			monthNamesShort: [ "1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월" ],
 		};	
+
+		// today is a default
+		this.from = new Date();
+		this.to = new Date();
 	}
 }
