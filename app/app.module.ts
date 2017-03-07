@@ -27,6 +27,7 @@ import {
 	ChartModule,
 	DialogModule,
 	InputTextareaModule,
+	MessagesModule,
 } from 'primeng/primeng';
 
 @NgModule({
@@ -43,6 +44,7 @@ import {
 			ChartModule,
 			DialogModule,
 			InputTextareaModule,
+			MessagesModule,
     ],
     declarations: [
         AppComponent,

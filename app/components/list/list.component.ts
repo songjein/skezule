@@ -9,6 +9,10 @@ import { Todo } from '../../todo';
     template: `
 			<div style="height:5px;"></div>
 
+			<p-messages [value]="msgs"></p-messages>
+
+			<div style="height:5px;"></div>
+
 			<div style="color:rgb(150,150,150);">
 				오늘 할일
 			</div>
@@ -41,6 +45,8 @@ import { Todo } from '../../todo';
 })
 export class ListComponent implements OnInit {
 
+	msgs: Message[] = [];
+
 	selectedItems: string[] = [];
 
 	finishlog: string;
@@ -58,7 +64,8 @@ export class ListComponent implements OnInit {
 
 	finishWithLog(){
 		if (this.selectedItems.length == 0){
-			alert("완료할 목표를 선택해 주세요");
+			this.msgs = [];
+			this.msgs.push({severity:'warn', summary:'', detail:'완료할 목표를 선택해주세요'});
 			return;
 		}
 		this.router.navigate(['/complete', this.selectedItems.join(",")]);
@@ -66,7 +73,8 @@ export class ListComponent implements OnInit {
 
 	finishSimple(){
 		if (this.selectedItems.length == 0){
-			alert("완료할 목표를 선택해 주세요");
+			this.msgs = [];
+			this.msgs.push({severity:'warn', summary:'', detail:'완료할 목표를 선택해주세요'});
 			return;
 		}
 		alert("완료");	
