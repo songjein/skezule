@@ -61,8 +61,7 @@ export class ListComponent implements OnInit {
 			alert("완료할 목표를 선택해 주세요");
 			return;
 		}
-		const sep = "#$%#$%"
-		this.router.navigate(['/complete', this.selectedItems.join(sep)]);
+		this.router.navigate(['/complete', this.selectedItems.join(",")]);
 	}
 
 	finishSimple(){

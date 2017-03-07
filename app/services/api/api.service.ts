@@ -6,7 +6,8 @@ import { Todo } from '../../todo';
 
 @Injectable()
 export class ApiService{
-	private apiUrl = 'api/todos';
+	private todosUrl = 'api/todos';
+	private todosOfUrl = 'api/todosOf';
 	
 	// todo list shared by other components
 	todos: Todo[];
@@ -18,7 +19,7 @@ export class ApiService{
 	//getTodos(): Promise<Todo[]> {
 	// 아.. promise로 하는 대신, return만 안할 뿐이니까..!!
 	getTodos(): void {
-		return this.http.get(this.apiUrl)
+		return this.http.get(this.todosUrl)
 			.toPromise()
 			.then(response => { 
 				this.todos = response.json() as Todo[];
@@ -26,9 +27,16 @@ export class ApiService{
 			.catch(this.handleError);
 	}
 
+	getTodosOf(selectedTodos: string): Promise<Todo[]>{
+		return this.http.get(this.todosOfUrl + "/" + selectedTodos)
+			.toPromise()
+			.then(response => response.json() as Todo[])
+			.catch(this.handleError);
+	}
+
 	createTodo(goal: string, from: Date, to: Date): void{
 		return this.http
-			.post(this.apiUrl 
+			.post(this.todosUrl 
 				,JSON.stringify({goal: goal, from: from, to: to})
 				,{headers: this.headers})
 			.toPromise()

@@ -3,4 +3,6 @@ export class Todo {
 	goal: string;
 	from: Date;
 	to: Date;
+	// isCompleted
+	// category 
 }
