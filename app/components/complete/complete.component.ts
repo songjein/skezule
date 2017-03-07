@@ -10,14 +10,16 @@ import 'rxjs/add/operator/switchMap';
 @Component({
     selector: 'complete',
     template: `
-			<div style="color:rgb(150,150,150);">
+			<p-messages [value]="msgs"></p-messages>
+
+			<div style="color:rgb(150,150,150); margin: 5px 0;">
 				목표
 			</div>
 			<div *ngFor="let todo of selectedTodos">{{todo.goal}}</div>
 			
 			<div style="height: 10px"></div>
 
-			<div style="color:rgb(150,150,150);">
+			<div style="color:rgb(150,150,150); margin: 5px 0;">
 				기록
 			</div>
 			<textarea pInputTextarea [(ngModel)]="finishlog" rows="5" style="width:300px"></textarea>
@@ -32,10 +34,13 @@ import 'rxjs/add/operator/switchMap';
 		`]
 })
 export class CompleteComponent implements OnInit {
+
+	msgs: Message[] = [];
+
 	selectedTodosIds: string;
 	selectedTodos: Todo[];
 
-	finishlog: string;
+	finishlog: string = "";
 
 	constructor(
 		private route: ActivatedRoute,
@@ -43,7 +48,10 @@ export class CompleteComponent implements OnInit {
 	) {}
 
 	onclick(){
-		alert('제출');	
+		if (this.finishlog.length == 0){
+			this.msgs = [];
+			this.msgs.push({severity:'warn', summary:'', detail:'로그를 작성해주세요'});
+		}
 	}
 
 	
