@@ -32,6 +32,19 @@ router.get('/todos/:id', function(req, res, next) {
 	res.json(ret);
 });
 
+/* GET todos goals */
+router.get('/todosOf/:selectedItems', function(req, res, next) {
+	var selectedItems = req.params.selectedItems.split(',');
+	console.log("good", selectedItems);
+	var ret = [];
+	for (var i = 0 ; i < data.length; i++){
+		if (selectedItems.includes(data[i]["id"].toString())){
+			ret.push(data[i]);	
+		}
+	}
+	res.json(ret);
+});
+
 /* Create todo list */
 router.post('/todos', function(req, res, next) {
 	var goal = req.body.goal;
@@ -50,7 +63,7 @@ router.delete('/todos', function(req, res, next) {
 	
 	//delete
 	for (var i = 0 ; i < data.length; i++){
-		if (selectedItems.includes(data["id"]).toString()){
+		if (selectedItems.includes(data[i]["id"]).toString()){
 			data.splice(i, 1);
 		}
 	}
