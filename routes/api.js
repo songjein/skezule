@@ -77,7 +77,7 @@ router.delete('/todos', function(req, res, next) {
 
 	// add log
 	if (log){
-		logs.push({id: logs.length + 1, log: log, selectedTodos: selectedTodos});	
+		logs.push({id: logs.length + 1, log: log, selectedTodos: req.body.selectedTodos});	
 	}
 
 	res.json(ret);

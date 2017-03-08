@@ -6,6 +6,8 @@ import { ApiService } from '../../services/api/api.service';
 @Component({
     selector: 'form',
     template: `
+			<p-messages [value]="msgs"></p-messages>
+
 			<div class="label">목표</div>
 			<input type="text" pInputText [(ngModel)]="goal" size="30" />
 
@@ -34,9 +36,11 @@ import { ApiService } from '../../services/api/api.service';
 		`]
 })
 export class FormComponent {
+	msgs: Message[] = [];
+
 	from: Date;
 	to: Date;
-	goal: string;
+	goal: string = "";
 	category: string;
 
 	kr: any;
@@ -47,6 +51,13 @@ export class FormComponent {
 	){}
 
 	onclick(){
+
+		if (this.goal.length == 0){
+			this.msgs = [];
+			this.msgs.push({severity:'warn', summary:'', detail:'목표를 작성해주세요'});
+			return;
+		}
+
 		this.apiService.createTodo(this.goal, this.from, this.to)
 			.then(()=>{
 				this.router.navigate(['/']);
