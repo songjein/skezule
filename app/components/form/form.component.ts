@@ -47,9 +47,10 @@ export class FormComponent {
 	){}
 
 	onclick(){
-		//console.log(this.from.getFullYear(), this.to, this.goal, this.category);	
-		this.apiService.createTodo(this.goal, this.from, this.to);
-		this.router.navigate(['/']);
+		this.apiService.createTodo(this.goal, this.from, this.to)
+			.then(()=>{
+				this.router.navigate(['/']);
+			});
 	}
 
 	ngOnInit(){

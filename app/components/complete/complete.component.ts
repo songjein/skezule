@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ApiService } from '../../services/api/api.service'; 
 
@@ -22,7 +22,7 @@ import 'rxjs/add/operator/switchMap';
 			<div style="color:rgb(150,150,150); margin: 5px 0;">
 				기록
 			</div>
-			<textarea pInputTextarea [(ngModel)]="finishlog" rows="5" style="width:300px"></textarea>
+			<textarea pInputTextarea [(ngModel)]="log" rows="5" style="width:300px"></textarea>
 
 			<div style="height:10px"></div>
 
@@ -40,18 +40,25 @@ export class CompleteComponent implements OnInit {
 	selectedTodosIds: string;
 	selectedTodos: Todo[];
 
-	finishlog: string = "";
+	log: string = "";
 
 	constructor(
 		private route: ActivatedRoute,
+		private router: Router,
 		private apiService: ApiService
 	) {}
 
 	onclick(){
-		if (this.finishlog.length == 0){
+		if (this.log.length == 0){
 			this.msgs = [];
 			this.msgs.push({severity:'warn', summary:'', detail:'로그를 작성해주세요'});
 		}
+
+		this.apiService	
+			.deleteTodos(this.selectedTodosIds, this.log)
+			.then(()=>{
+				this.router.navigate(['/']);
+			})
 	}
 
 	
