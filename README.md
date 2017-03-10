@@ -1,1 +1,3 @@
-송송송 프로젝트 이히히히히
+http://skezule.me:8888
+
+schedule => personal log => personal data analysis
