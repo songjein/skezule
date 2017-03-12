@@ -6,8 +6,8 @@ import { Todo } from '../../todo';
 
 @Injectable()
 export class ApiService{
-	private todosUrl = 'api/todos';
-	private todosOfUrl = 'api/todosOf';
+	private todosUrl = 'http://skezule.me:3000/todos';
+	private todosOfUrl = 'http://skezule.me:3000/todosOf';
 	
 	// todo list shared by other components
 	todos: Todo[];
@@ -20,6 +20,7 @@ export class ApiService{
 		return this.http.get(this.todosUrl)
 			.toPromise()
 			.then(response => { 
+				console.log("ress!!", response)
 				this.todos = response.json() as Todo[];
 			})
 			.catch(this.handleError);
@@ -34,7 +35,7 @@ export class ApiService{
 
 	createTodo(goal: string, from: Date, to: Date): Promise<void>{
 		return this.http
-			.post(this.todosUrl 
+			.post(this.todosUrl
 				,JSON.stringify({goal: goal, from: from, to: to})
 				,{headers: this.headers})
 			.toPromise()
@@ -45,20 +46,12 @@ export class ApiService{
 			.catch(this.handleError);
 	}
 
-	deleteTodos(selectedTodos: string, log: string): Promise<void>{
+	completeTodos(selectedTodos: string, log: string): Promise<void>{
 		// http://stackoverflow.com/questions/39607971/angular-2-http-delete-send-json-in-body
-		let body = JSON.stringify(
-			{
-				selectedTodos: selectedTodos,
-				log: log
-			}
-		);
-		let options = new RequestOptions({
-			headers: this.headers,
-			body : body
-		});
 		return this.http
-			.delete(this.todosUrl, options)
+			.post(this.todosUrl + "/complete"
+				,JSON.stringify({selectedTodos: selectedTodos,log: log})
+				,{headers: this.headers})
 			.toPromise()
 			.then(res => {
 				// const todos = res.json();	

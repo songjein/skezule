@@ -55,7 +55,7 @@ export class CompleteComponent implements OnInit {
 		}
 
 		this.apiService	
-			.deleteTodos(this.selectedTodosIds, this.log)
+			.completeTodos(this.selectedTodosIds, this.log)
 			.then(()=>{
 				this.router.navigate(['/']);
 			})
