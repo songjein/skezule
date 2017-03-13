@@ -6,6 +6,7 @@ import { Todo } from '../../todo';
 
 @Injectable()
 export class ApiService{
+	private baseUrl = "http://skezule.me:3000";
 	private todosUrl = 'http://skezule.me:3000/todos';
 	private todosOfUrl = 'http://skezule.me:3000/todosOf';
 	
@@ -17,7 +18,7 @@ export class ApiService{
 	constructor(private http: Http) { }
 
 	getTodos(): Promise<void> {
-		return this.http.get(this.todosUrl)
+		return this.http.get(this.baseUrl + "/notCompletedList")
 			.toPromise()
 			.then(response => { 
 				console.log("ress!!", response)
@@ -49,7 +50,7 @@ export class ApiService{
 	completeTodos(selectedTodos: string, log: string): Promise<void>{
 		// http://stackoverflow.com/questions/39607971/angular-2-http-delete-send-json-in-body
 		return this.http
-			.post(this.todosUrl + "/complete"
+			.post(this.baseUrl + "/complete"
 				,JSON.stringify({selectedTodos: selectedTodos,log: log})
 				,{headers: this.headers})
 			.toPromise()
