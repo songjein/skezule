@@ -5,6 +5,7 @@ import { ListComponent } from './components/list/list.component';
 import { StatComponent } from './components/stat/stat.component';
 import { CompleteComponent } from './components/complete/complete.component';
 import { UserComponent } from './components/user/user.component';
+import { HistoryComponent } from './components/history/history.component';
 
 export const routes: Route[] = [
     { path: '', pathMatch: 'full', component: ListComponent},
@@ -13,6 +14,7 @@ export const routes: Route[] = [
     { path: 'stat', component: StatComponent },
     { path: 'complete/:selectedTodos', component: CompleteComponent },
     { path: 'user', component: UserComponent },
+    { path: 'history', component: HistoryComponent },
 ];
 
 export const routing = RouterModule.forRoot(routes, { useHash: true });

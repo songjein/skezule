@@ -12,6 +12,7 @@ import { StatComponent } from "./components/stat/stat.component";
 import { CompleteComponent } from "./components/complete/complete.component";
 import { NavComponent } from "./components/nav/nav.component";
 import { UserComponent } from "./components/user/user.component";
+import { HistoryComponent } from "./components/history/history.component";
 
 import { ApiService } from './services/api/api.service';
 
@@ -54,6 +55,7 @@ import {
 				CompleteComponent,
 				NavComponent,
 				UserComponent,
+				HistoryComponent,
     ],
 
 		providers: [

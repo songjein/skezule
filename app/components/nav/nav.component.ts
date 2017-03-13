@@ -78,7 +78,7 @@ import { Component } from '@angular/core';
 			</div>
 			
 			<div id="menu">
-				<a [routerLink]="['/']" (click)="showMenu()">
+				<a [routerLink]="['/history']" (click)="showMenu()">
 					<div class="menu-row" style="background: rgb(251,251,251); color:rgb(50,50,50);"> 
 						<i class="fa fa-check-square-o menu-item" aria-hidden="true" ></i>
 						<span class="menu-item-label">히스토리</span>

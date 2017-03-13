@@ -21,11 +21,20 @@ export class ApiService{
 		return this.http.get(this.baseUrl + "/notCompletedList")
 			.toPromise()
 			.then(response => { 
-				console.log("ress!!", response)
 				this.todos = response.json() as Todo[];
 			})
 			.catch(this.handleError);
 	}
+
+	getHistory(): Promise<void> {
+		return this.http.get(this.baseUrl + "/todos")
+			.toPromise()
+			.then(response => { 
+				this.todos = response.json() as Todo[];
+			})
+			.catch(this.handleError);
+	}
+
 
 	getTodosOf(selectedTodos: string): Promise<Todo[]>{
 		return this.http.get(this.todosOfUrl + "/" + selectedTodos)
