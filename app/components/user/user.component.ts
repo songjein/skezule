@@ -13,10 +13,10 @@ import { Component } from '@angular/core';
 			<div style="height:10px;"></div>
 
 			<div style="color:rgb(150,150,150)">
-				사진	
+				이름: 오하시
 			</div>
 
-			<div style="height:5px;"></div>
+			<div style="height:10px;"></div>
 
 			<div>
 				<!--<img id="profile-img" src="http://placehold.it/300x300">-->
@@ -25,15 +25,7 @@ import { Component } from '@angular/core';
 
 			<div style="height:10px;"></div>
 
-			<div style="color:rgb(150,150,150)">
-				이름: 오하시
-			</div>
-
-			<div style="height:10px;"></div>
-
-			<div style="color:rgb(150,150,150)">
-				목표 달성률 : <span style="color:red">상위 1%</span>
-			</div>
+			<history></history>
 		`,
     styles: [`
 			#profile-img{
