@@ -3,6 +3,7 @@ import { Headers, Http, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Todo } from '../../todo';
+import { Log } from '../../log';
 
 @Injectable()
 export class ApiService{
@@ -10,8 +11,10 @@ export class ApiService{
 	private todosUrl = 'http://skezule.me:3000/todos';
 	private todosOfUrl = 'http://skezule.me:3000/todosOf';
 	
-	// todo list shared by other components
+	// list shared by other components
 	todos: Todo[];
+	logs: Log[];
+
 
 	private headers = new Headers({'Content-Type': 'application/json'});
 
@@ -35,6 +38,14 @@ export class ApiService{
 			.catch(this.handleError);
 	}
 
+	getLogs(): Promise<void> {
+		return this.http.get(this.baseUrl + "/logs")
+			.toPromise()
+			.then(response => {
+				this.logs = response.json() as Log[];	
+			})
+			.catch(this.handleError);
+	}
 
 	getTodosOf(selectedTodos: string): Promise<Todo[]>{
 		return this.http.get(this.todosOfUrl + "/" + selectedTodos)
