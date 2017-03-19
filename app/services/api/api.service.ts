@@ -54,10 +54,10 @@ export class ApiService{
 			.catch(this.handleError);
 	}
 
-	createTodo(goal: string, from: Date, to: Date): Promise<void>{
+	createTodo(goal: string, from: Date, to: Date, category: string): Promise<void>{
 		return this.http
 			.post(this.todosUrl
-				,JSON.stringify({goal: goal, from: from, to: to})
+				,JSON.stringify({goal: goal, from: from, to: to, category: category})
 				,{headers: this.headers})
 			.toPromise()
 			.then(res => {

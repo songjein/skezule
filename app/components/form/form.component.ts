@@ -41,7 +41,7 @@ export class FormComponent {
 	from: Date;
 	to: Date;
 	goal: string = "";
-	category: string;
+	category: string = "";
 
 	kr: any;
 
@@ -58,7 +58,7 @@ export class FormComponent {
 			return;
 		}
 
-		this.apiService.createTodo(this.goal, this.from, this.to)
+		this.apiService.createTodo(this.goal, this.from, this.to, this.category)
 			.then(()=>{
 				this.router.navigate(['/']);
 			});
