@@ -5,5 +5,5 @@ export class Todo {
 	to: Date;
 	isCompleted: boolean;
 	log_id: number;
-	// category 
+	tag_list: string[];
 }
