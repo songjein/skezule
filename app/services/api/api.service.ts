@@ -80,25 +80,25 @@ export class ApiService{
 			.catch(this.handleError);
 	}
 
-	updateMemo(memo: string): Promise<void>{
+	updateMemo(memo: string): Promise<any>{
 		return this.http
 			.post(this.baseUrl + "/memos"
 				,JSON.stringify({memo: memo})
 				,{headers: this.headers})
 			.toPromise()
 			.then(res => {
-				// pass
+				return res.json();
 			})
 			.catch(this.handleError);
 	}
 
-	getMemo(): Promise<string>{
+	getMemo(): Promise<any>{
 		return this.http
 			.get(this.baseUrl + "/memos"
 				,{headers: this.headers})
 			.toPromise()
 			.then(res => {
-				return res.json().memo;
+				return res.json();
 			})
 			.catch(this.handleError);
 	}

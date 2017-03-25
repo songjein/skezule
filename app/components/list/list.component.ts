@@ -43,6 +43,8 @@ import { Todo } from '../../todo';
 			<div style="height:10px;"></div>
 
 			<textarea pInputTextarea autoResize="autoResize" rows="5" cols="30" placeholder="메모장" [(ngModel)]="memo" (keyup)="onChangeMemo()" ></textarea>
+			<br>
+			<span *ngIf="memoUpdatedTime" style="color:gray;font-size:0.9em;">{{memoUpdatedTime | date:'medium'}} 동기화 됨<span>
 
 		`,
     styles: [`
@@ -60,6 +62,7 @@ export class ListComponent implements OnInit, onDestroy {
 
 	memo: string;
 	memoChanged: boolean = false;
+	memoUpdatedTime: Date; // https://angular.io/docs/ts/latest/api/common/index/DatePipe-pipe.html
 	memoIntervalId: any;
 
 	constructor(
@@ -95,8 +98,9 @@ export class ListComponent implements OnInit, onDestroy {
 	}
 
 	getMemo(): void {
-		this.apiService.getMemo().then((memo)=>{
-			this.memo = memo;
+		this.apiService.getMemo().then((res)=>{
+			this.memo = res.memo;
+			this.memoUpdatedTime = res.updated_at;
 		});		
 	}
 
@@ -108,7 +112,9 @@ export class ListComponent implements OnInit, onDestroy {
 		// send memo to server 
 		this.memoIntervalId = setInterval(()=>{
 			if (this.memoChanged){
-				this.apiService.updateMemo(this.memo).then(()=>{
+				this.apiService.updateMemo(this.memo).then((res)=>{
+					console.log(res);
+					this.memoUpdatedTime = res.updated_at;
 					this.memoChanged = false;
 				});
 			}
