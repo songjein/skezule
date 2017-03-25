@@ -75,8 +75,30 @@ export class ApiService{
 				,{headers: this.headers})
 			.toPromise()
 			.then(res => {
-				// const todos = res.json();	
-				// 암것도 안해도되네, list의 onInit에서 알아서 다시가져오네 보니까
+				// pass
+			})
+			.catch(this.handleError);
+	}
+
+	updateMemo(memo: string): Promise<void>{
+		return this.http
+			.post(this.baseUrl + "/memos"
+				,JSON.stringify({memo: memo})
+				,{headers: this.headers})
+			.toPromise()
+			.then(res => {
+				// pass
+			})
+			.catch(this.handleError);
+	}
+
+	getMemo(): Promise<string>{
+		return this.http
+			.get(this.baseUrl + "/memos"
+				,{headers: this.headers})
+			.toPromise()
+			.then(res => {
+				return res.json().memo;
 			})
 			.catch(this.handleError);
 	}

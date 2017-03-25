@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ApiService } from '../../services/api/api.service'; 
@@ -42,13 +42,13 @@ import { Todo } from '../../todo';
 
 			<div style="height:10px;"></div>
 
-			<textarea pInputTextarea autoResize="autoResize" rows="5" cols="30" placeholder="메모장"></textarea>
+			<textarea pInputTextarea autoResize="autoResize" rows="5" cols="30" placeholder="메모장" [(ngModel)]="memo" (keyup)="onChangeMemo()" ></textarea>
 
 		`,
     styles: [`
 		`]
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, onDestroy {
 
 	msgs: Message[] = [];
 
@@ -57,6 +57,10 @@ export class ListComponent implements OnInit {
 	finishlog: string;
 
 	todos: Todo[];
+
+	memo: string;
+	memoChanged: boolean = false;
+	memoIntervalId: any;
 
 	constructor(
 		private router: Router,
@@ -90,7 +94,36 @@ export class ListComponent implements OnInit {
 		this.apiService.getTodos();
 	}
 
+	getMemo(): void {
+		this.apiService.getMemo().then((memo)=>{
+			this.memo = memo;
+		});		
+	}
+
+	onChangeMemo(): void {
+		this.memoChanged = true;
+	}
+
+	updateMemo(): void {
+		// send memo to server 
+		this.memoIntervalId = setInterval(()=>{
+			if (this.memoChanged){
+				this.apiService.updateMemo(this.memo).then(()=>{
+					this.memoChanged = false;
+				});
+			}
+		}, 5000);
+	}
+
 	ngOnInit(): void {
+		console.log("create list");
 		this.getTodos();			
+		this.getMemo();
+		this.updateMemo();
+	}
+
+	ngOnDestroy():{
+		// not called..
+		clearInterval(this.memoIntervalId);
 	}
 }
