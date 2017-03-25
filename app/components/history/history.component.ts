@@ -13,6 +13,19 @@ import { Todo } from '../../todo';
 
 			<div style="height:5px;"></div>
 
+			<div style="height:10px;"></div>
+
+			<div style="color:rgb(150,150,150); background:rgb(255,235,53);">
+				남긴 로그들
+			</div>
+
+			<div style="height:10px;"></div>
+
+			<div *ngFor="let log of apiService.logs" style="margin-bottom:10px;">
+				<div>{{log.body}}</div>
+			</div>
+
+
 			<div style="color:rgb(150,150,150); background:rgb(255,235,53);">
 				목표했던 일들
 			</div>
@@ -29,18 +42,6 @@ import { Todo } from '../../todo';
 				</span>
 			</div>
 
-			<div style="height:10px;"></div>
-
-			<div style="color:rgb(150,150,150); background:rgb(255,235,53);">
-				남긴 로그들
-			</div>
-
-			<div style="height:10px;"></div>
-
-			<div *ngFor="let log of apiService.logs" style="margin-bottom:10px;">
-				<div>{{log.body}}</div>
-			</div>
-			
 			<div style="height:5px;"></div>
 		`,
     styles: [`
