@@ -40,6 +40,10 @@ import { Todo } from '../../todo';
 				로그와 함께 완료 
 			</span>  
 
+			<div style="height:10px;"></div>
+
+			<textarea pInputTextarea autoResize="autoResize" rows="5" cols="30" placeholder="메모장"></textarea>
+
 		`,
     styles: [`
 		`]
