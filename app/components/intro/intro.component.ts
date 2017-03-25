@@ -14,7 +14,7 @@ import { ApiService } from '../../services/api/api.service';
 					<div id="layer1"></div>
 					<div id="layer2">
 						<div style="font-size: 2em; margin-bottom: 20px;">
-							<b>skezule.me</b>는<br>
+							<b>SkezLog</b>는<br>
 							<span style="white-space: nowrap"><b>Todo-List</b> 기반의</span> <span style="white-space:nowrap"><b>Blog</b>입니다.</span>
 						</div>
 
@@ -28,8 +28,35 @@ import { ApiService } from '../../services/api/api.service';
 
 				<!-- content -->
 				<div style="padding:10px">
-					<div>
-						<h1>계획하고, 기록하고, 개선하다</h1>
+					<div class="detail">
+						<div style="font-size:6em; color:rgb(200,200,200);">
+							<i class="fa fa-list" aria-hidden="true"></i>
+						</div>
+						<h1>계획하고</h1>
+						<div style="color: gray">
+							Todo list에 다양한 계획을<br>
+							쉽게 추가해 보세요.	
+						</div>
+					</div>
+					<div class="detail">
+						<div style="font-size:6em; color:rgb(200,200,200);">
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+						</div>
+						<h1>기록하고</h1>
+						<div style="color: gray">
+							계획을 달성해 나가면서, <br>
+							일상을 정리해보세요.
+						</div>
+					</div>
+					<div class="detail">
+						<div style="font-size:6em; color:rgb(200,200,200);">
+							<i class="fa fa-line-chart" aria-hidden="true"></i>
+						</div>
+						<h1>개선하다</h1>
+						<div style="color: gray">
+							데이터 분석을 통해서,<br>
+							삶을 개선해보세요.
+						</div>
 					</div>
 
 					<div style="height:10px;"></div>
@@ -66,6 +93,14 @@ import { ApiService } from '../../services/api/api.service';
 				font-size: 0.8em !important;	
 			}
 
+			.detail{
+				float: left;
+				height: 200px;
+				width: 27%;
+				padding: 3%;
+				text-align: center;
+			}
+
 			@media (max-width: 1200px){
 				#adjust{
 					margin: -75px -10px;	
@@ -75,6 +110,11 @@ import { ApiService } from '../../services/api/api.service';
 					font-size: 1.0em;
 					text-align: right;
 				}	
+				.detail{
+					width: 100%;	
+					padding: 0;
+					margin-bottom: 70px;
+				}
 			}
 		`]
 })
