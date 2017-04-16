@@ -27,7 +27,7 @@ import { ApiService } from '../../services/api/api.service';
 				</div>
 
 				<!-- content -->
-				<div style="padding:10px">
+				<div id="intro-content" >
 					<div class="detail">
 						<div style="font-size:6em; color:rgb(200,200,200);">
 							<i class="fa fa-list" aria-hidden="true"></i>
@@ -101,6 +101,12 @@ import { ApiService } from '../../services/api/api.service';
 				text-align: center;
 			}
 
+			#intro-content {
+				padding:10px; 
+				max-width: 1000px; 
+				margin: 0 auto;
+			}
+
 			@media (max-width: 1200px){
 				#adjust{
 					margin: -75px -10px;	
@@ -114,6 +120,10 @@ import { ApiService } from '../../services/api/api.service';
 					width: 100%;	
 					padding: 0;
 					margin-bottom: 70px;
+				}
+
+				#intro-content{
+					margin: 50px auto;
 				}
 			}
 		`]
