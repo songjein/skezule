@@ -96,6 +96,12 @@ import { Component } from '@angular/core';
 						<span class="menu-item-label">개인정보</span>
 					</div>
 				</a>
+				<a [routerLink]="['/login']" (click)="showMenu()">
+					<div class="menu-row" style="background: white; color:rgb(50,50,50);"> 
+						<i class="fa fa-user-o menu-item" aria-hidden="true" ></i>
+						<span class="menu-item-label">로그인</span>
+					</div>
+				</a>
 			</div>
 		`,
 })

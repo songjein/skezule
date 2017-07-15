@@ -128,7 +128,7 @@ export class ListComponent implements OnInit, onDestroy {
 		this.updateMemo();
 	}
 
-	ngOnDestroy():{
+	ngOnDestroy(){
 		// not called..
 		clearInterval(this.memoIntervalId);
 	}

@@ -6,6 +6,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { AppComponent }  from './app.component';
 import { routing } from "./routes";
 
+import { LoginComponent } from "./components/login/login.component";
 import { FormComponent } from "./components/form/form.component";
 import { ListComponent } from "./components/list/list.component";
 import { StatComponent } from "./components/stat/stat.component";
@@ -16,6 +17,7 @@ import { HistoryComponent } from "./components/history/history.component";
 import { IntroComponent } from "./components/intro/intro.component";
 
 import { ApiService } from './services/api/api.service';
+import { GlobalService } from './services/global/global.service';
 
 
 /**
@@ -49,19 +51,21 @@ import {
 			MessagesModule,
     ],
     declarations: [
-        AppComponent,
-				FormComponent,
-				ListComponent,
-				StatComponent,
-				CompleteComponent,
-				NavComponent,
-				UserComponent,
-				HistoryComponent,
-				IntroComponent,
+			AppComponent,
+			FormComponent,
+			ListComponent,
+			StatComponent,
+			CompleteComponent,
+			NavComponent,
+			UserComponent,
+			HistoryComponent,
+			IntroComponent,
+			LoginComponent,
     ],
 
 		providers: [
-			ApiService	
+			ApiService,
+			GlobalService,
 		],
     bootstrap: [ AppComponent ]
 })
