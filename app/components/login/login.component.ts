@@ -1,16 +1,14 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit} from '@angular/core';
+import { Router } from '@angular/router'; 
 import { Headers } from '@angular/http'; 
 
 import { ApiService } from '../../services/api/api.service'; 
-import { GlobalService } from '../../services/global/global.service'; 
+import { AuthService } from '../../services/auth/auth.service'; 
 
 @Component({
     selector: 'login',
     template: `
 			<div style="height:5px;"></div>
-
-			<p-messages [value]="msgs"></p-messages>
 
 			<div style="height:10px;"></div>
 
@@ -28,10 +26,7 @@ import { GlobalService } from '../../services/global/global.service';
     styles: [`
 		`]
 })
-export class LoginComponent implements OnInit, onDestroy {
-
-	// move to global
-	msgs: Message[] = [];
+export class LoginComponent implements OnInit{
 
 	id: String = ""
 	pw: String = ""
@@ -39,23 +34,20 @@ export class LoginComponent implements OnInit, onDestroy {
 	constructor(
 		private router: Router,
 		private apiService: ApiService,
-		private globalService: GlobalService,
+		private authService: AuthService,
 	){}
 
 	ngOnInit(): void {
-		console.log("login");
 	}
-
-	ngOnDestroy(): void {
-	}
-
 
 	login(): void {
 		this.apiService.login(this.id, this.pw).then((res) => {
 			const auth_token = JSON.parse(res._body).auth_token
-			this.globalService.headers = new Headers({'Content-Type': 'application/json', 'Authorization': auth_token});
+			this.authService.login(auth_token);
 			this.router.navigate(['/list']);
+
 		}).catch((error) => {
 			alert(error);	
-		}}
+		})
+	}
 }

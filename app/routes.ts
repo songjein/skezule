@@ -9,14 +9,16 @@ import { HistoryComponent } from './components/history/history.component';
 import { IntroComponent } from './components/intro/intro.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { CanActivateViaAuthGuard } from './services/guards/can-activate-via-auth-guard.service';
+
 export const routes: Route[] = [
-    { path: '', pathMatch: 'full', component: ListComponent},
-    { path: 'form', component: FormComponent },
-    { path: 'list', component: ListComponent },
-    { path: 'stat', component: StatComponent },
-    { path: 'complete/:selectedTodos', component: CompleteComponent },
-    { path: 'user', component: UserComponent },
-    { path: 'history', component: HistoryComponent },
+    { path: '', pathMatch: 'full', component: ListComponent, canActivate: [CanActivateViaAuthGuard] },
+    { path: 'form', component: FormComponent, canActivate: [CanActivateViaAuthGuard]  },
+    { path: 'list', component: ListComponent, canActivate: [CanActivateViaAuthGuard] },
+    { path: 'stat', component: StatComponent, canActivate: [CanActivateViaAuthGuard]  },
+    { path: 'complete/:selectedTodos', component: CompleteComponent, canActivate: [CanActivateViaAuthGuard]  },
+    { path: 'user', component: UserComponent, canActivate: [CanActivateViaAuthGuard]  },
+    { path: 'history', component: HistoryComponent, canActivate: [CanActivateViaAuthGuard]  },
     { path: 'intro', component: IntroComponent },
     { path: 'login', component: LoginComponent },
 ];

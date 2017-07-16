@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import { Todo } from '../../todo';
 import { Log } from '../../log';
 
-import { GlobalService } from '../../services/global/global.service'; 
+import { AuthService } from '../auth/auth.service'; 
 
 @Injectable()
 export class ApiService{
@@ -19,14 +19,14 @@ export class ApiService{
 
 	constructor(
 		private http: Http,
-		private globalService: GlobalService,
+		private authService: AuthService,
 		) { }
 
-	login(id: string, pw: string): Promise<void>{
+	login(id: string, pw: string): Promise<any>{
 		return this.http
 			.post(this.baseUrl + "/authenticate"
 				,JSON.stringify({user_id: id, password: pw})
-				,{headers: this.globalService.headers})
+				,{headers: this.authService.headers})
 			.toPromise()
 			.then(res => {
 				return res;
@@ -36,7 +36,7 @@ export class ApiService{
 
 	getTodos(): Promise<void> {
 		return this.http.get(this.baseUrl + "/notCompletedList"
-			,{headers: this.globalService.headers})
+			,{headers: this.authService.headers})
 			.toPromise()
 			.then(response => { 
 				this.todos = response.json() as Todo[];
@@ -46,7 +46,7 @@ export class ApiService{
 
 	getHistory(): Promise<void> {
 		return this.http.get(this.baseUrl + "/todos"
-			,{headers: this.globalService.headers})
+			,{headers: this.authService.headers})
 			.toPromise()
 			.then(response => { 
 				this.todos = response.json() as Todo[];
@@ -56,7 +56,7 @@ export class ApiService{
 
 	getLogs(): Promise<void> {
 		return this.http.get(this.baseUrl + "/logs"
-			,{headers: this.globalService.headers})
+			,{headers: this.authService.headers})
 			.toPromise()
 			.then(response => {
 				this.logs = response.json() as Log[];	
@@ -66,7 +66,7 @@ export class ApiService{
 
 	getTodosOf(selectedTodos: string): Promise<Todo[]>{
 		return this.http.get(this.todosOfUrl + "/" + selectedTodos
-			,{headers: this.globalService.headers})
+			,{headers: this.authService.headers})
 			.toPromise()
 			.then(response => response.json() as Todo[])
 			.catch(this.handleError);
@@ -76,7 +76,7 @@ export class ApiService{
 		return this.http
 			.post(this.todosUrl
 				,JSON.stringify({goal: goal, from: from, to: to, category: category})
-				,{headers: this.globalService.headers})
+				,{headers: this.authService.headers})
 			.toPromise()
 			.then(res => {
 				//const todo = res.json()
@@ -90,7 +90,7 @@ export class ApiService{
 		return this.http
 			.post(this.baseUrl + "/complete"
 				,JSON.stringify({selectedTodos: selectedTodos,log: log})
-				,{headers: this.globalService.headers})
+				,{headers: this.authService.headers})
 			.toPromise()
 			.then(res => {
 				// pass
@@ -102,7 +102,7 @@ export class ApiService{
 		return this.http
 			.post(this.baseUrl + "/memos"
 				,JSON.stringify({memo: memo})
-				,{headers: this.globalService.headers})
+				,{headers: this.authService.headers})
 			.toPromise()
 			.then(res => {
 				return res.json();
@@ -113,7 +113,7 @@ export class ApiService{
 	getMemo(): Promise<any>{
 		return this.http
 			.get(this.baseUrl + "/memos"
-				,{headers: this.globalService.headers})
+				,{headers: this.authService.headers})
 			.toPromise()
 			.then(res => {
 				return res.json();

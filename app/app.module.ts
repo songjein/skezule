@@ -17,7 +17,8 @@ import { HistoryComponent } from "./components/history/history.component";
 import { IntroComponent } from "./components/intro/intro.component";
 
 import { ApiService } from './services/api/api.service';
-import { GlobalService } from './services/global/global.service';
+import { AuthService } from './services/auth/auth.service';
+import { CanActivateViaAuthGuard } from './services/guards/can-activate-via-auth-guard.service';
 
 
 /**
@@ -65,7 +66,8 @@ import {
 
 		providers: [
 			ApiService,
-			GlobalService,
+			AuthService,
+			CanActivateViaAuthGuard,
 		],
     bootstrap: [ AppComponent ]
 })
