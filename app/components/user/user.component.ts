@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { AuthService } from '../../services/auth/auth.service'; 
+
 @Component({
     selector: 'user',
     template: `
@@ -13,7 +15,7 @@ import { Component } from '@angular/core';
 			<div style="height:10px;"></div>
 
 			<div style="color:rgb(150,150,150)">
-				이름: 오하시
+				이름: {{ authService.user.user_id }} 
 			</div>
 
 			<div style="height:10px;"></div>
@@ -39,5 +41,6 @@ import { Component } from '@angular/core';
 export class UserComponent {
 
 	constructor(
+		private authService: AuthService;
 	){}
 }

@@ -2,6 +2,8 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ApiService } from '../../services/api/api.service'; 
+import { AuthService } from '../../services/auth/auth.service'; 
+
 import { Todo } from '../../todo';
 
 @Component({
@@ -12,6 +14,15 @@ import { Todo } from '../../todo';
 			<p-messages [value]="msgs"></p-messages>
 
 			<div style="height:5px;"></div>
+
+			<!-- 이 메시지는 하루의 context에 따라 달라짐 -->
+			<div style="color:rgb(150,150,150);">
+				<span style="color: orange; font-weight:bold;">
+					{{ authService.user.user_id  }}
+				</span> 님 안녕하세요!
+			</div>
+
+			<div style="height:10px;"></div>
 
 			<div style="color:rgb(150,150,150);">
 				오늘 할일
@@ -67,7 +78,8 @@ export class ListComponent implements OnInit, onDestroy {
 
 	constructor(
 		private router: Router,
-		private apiService: ApiService
+		private apiService: ApiService,
+		private authService: AuthService,
 	){}
 
 	onClick(){

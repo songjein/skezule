@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'my-app',
@@ -14,5 +14,5 @@ import { Component } from '@angular/core';
 			<!--<a [routerLink]="['/about/', { id: 2 }]">About</a>-->
 		`,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 }

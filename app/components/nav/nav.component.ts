@@ -61,7 +61,7 @@ import { AuthService } from '../../services/auth/auth.service';
 			}
 
 			#menu-nav-item {
-				margin: 12px 10px;
+				margin: 10px ;
 				font-size: 30px;
 				float:right;
 				cursor: pointer;
@@ -98,15 +98,15 @@ import { AuthService } from '../../services/auth/auth.service';
 						<span class="menu-item-label">개인정보</span>
 					</div>
 				</a>
-				<a [routerLink]="['/login']" (click)="showMenu()">
+				<a *ngIf="!authService.isLoggedIn()" [routerLink]="['/login']" (click)="showMenu()">
 					<div class="menu-row" style="background: white; color:rgb(50,50,50);"> 
 						<i class="fa fa-user-o menu-item" aria-hidden="true" ></i>
 						<span class="menu-item-label">로그인</span>
 					</div>
 				</a>
-				<a [routerLink]="['/login']" (click)="logout()">
+				<a *ngIf="authService.isLoggedIn()" [routerLink]="['/login']" (click)="logout()">
 					<div class="menu-row" style="background: white; color:rgb(50,50,50);"> 
-						<i class="fa fa-user-o menu-item" aria-hidden="true" ></i>
+						<i class="fa fa-power-off menu-item" aria-hidden="true" ></i>
 						<span class="menu-item-label">로그아웃</span>
 					</div>
 				</a>

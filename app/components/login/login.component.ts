@@ -8,7 +8,16 @@ import { AuthService } from '../../services/auth/auth.service';
 @Component({
     selector: 'login',
     template: `
-			<div style="height:5px;"></div>
+			<div style="height:15px;"></div>
+
+			<div *ngIf="authService.isLoggedIn()">
+				<span style="font-weight:bold">{{authService.user.user_id}}</span>
+				님, 이미 로그인 중입니다 :)
+			</div>
+
+			<div *ngIf="!authService.isLoggedIn()">
+				반갑습니다! 로그인을 해주세요 :)
+			<div>
 
 			<div style="height:10px;"></div>
 
@@ -43,7 +52,8 @@ export class LoginComponent implements OnInit{
 	login(): void {
 		this.apiService.login(this.id, this.pw).then((res) => {
 			const auth_token = JSON.parse(res._body).auth_token
-			this.authService.login(auth_token);
+			const user = JSON.parse(res._body).user
+			this.authService.login(auth_token, user);
 			this.router.navigate(['/list']);
 
 		}).catch((error) => {
