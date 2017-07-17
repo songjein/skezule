@@ -33,7 +33,8 @@ export class ApiService{
 			})
 			.catch(this.handleError);
 	}
-
+	
+	// complete 할 때, 먼저 호출해서 이름 받아오는 작업
 	getTodos(): Promise<void> {
 		return this.http.get(this.baseUrl + "/notCompletedList"
 			,{headers: this.authService.headers})
