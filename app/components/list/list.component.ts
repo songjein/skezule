@@ -15,50 +15,71 @@ import { Todo } from '../../todo';
 
 			<div style="height:5px;"></div>
 
-			<!-- 이 메시지는 하루의 context에 따라 달라짐 -->
-			<div style="color:rgb(150,150,150);">
-				<span style="color: orange; font-weight:bold;">
-					{{ authService.user.user_id  }}
-				</span> 님 안녕하세요!
+			<div id="left-list">
+				<!-- 이 메시지는 하루의 context에 따라 달라짐 -->
+				<div style="color:rgb(150,150,150);">
+					<span style="color: orange; font-weight:bold;">
+						{{ authService.user.user_id  }}
+					</span> 님 안녕하세요!
+				</div>
+
+				<div style="height:10px;"></div>
+
+				<div style="color:rgb(150,150,150);">
+					오늘 할일
+				</div>
+
+				<div style="height:10px;"></div>
+
+				<div *ngFor="let todo of apiService.todos" style="margin-bottom:10px;" >
+					<p-checkbox *ngIf="todo.tag_list.length == 0" class="todo" name="todolist" value="{{todo.id}}" label="{{todo.goal}}" [(ngModel)]="selectedItems"></p-checkbox>
+					<p-checkbox *ngIf="todo.tag_list.length > 0" class="todo" name="todolist" value="{{todo.id}}" label="[{{todo.tag_list}}] {{todo.goal}}" [(ngModel)]="selectedItems"></p-checkbox>
+				</div>
+				
+				<div style="height:5px;"></div>
+
+				<a [routerLink]="['/form']" style="color:rgb(150,150,150);margin-left:5px;">
+					<b>+</b> 작업 추가
+				</a>  
+
+				<div style="height:10px;"></div>
+
+				<span style="color:rgb(255,144,0);margin-left:5px; cursor:pointer" (click)="finishSimple()">
+					빠른 완료 
+				</span>  
+				<b style="color:rgb(150,150,150);">/</b> 
+				<span style="color:rgb(255,144,0);margin-left:5px; cursor:pointer" (click)="finishWithLog()">
+					로그와 함께 완료 
+				</span>  
+
+				<div style="height:10px;"></div>
+
+				<textarea pInputTextarea autoResize="autoResize" rows="5" cols="30" placeholder="메모장" [(ngModel)]="memo" (keyup)="onChangeMemo()" ></textarea>
+				<br>
+				<span *ngIf="memoUpdatedTime" style="color:gray;font-size:0.9em;">{{memoUpdatedTime | date:'medium'}} 동기화 됨</span>
 			</div>
+			<!-- left list end-->
 
-			<div style="height:10px;"></div>
-
-			<div style="color:rgb(150,150,150);">
-				오늘 할일
+			<div id="right-logs">
+				<logs></logs>
 			</div>
-
-			<div style="height:10px;"></div>
-
-			<div *ngFor="let todo of apiService.todos" style="margin-bottom:10px;" >
-				<p-checkbox *ngIf="todo.tag_list.length == 0" class="todo" name="todolist" value="{{todo.id}}" label="{{todo.goal}}" [(ngModel)]="selectedItems"></p-checkbox>
-				<p-checkbox *ngIf="todo.tag_list.length > 0" class="todo" name="todolist" value="{{todo.id}}" label="[{{todo.tag_list}}] {{todo.goal}}" [(ngModel)]="selectedItems"></p-checkbox>
-			</div>
-			
-			<div style="height:5px;"></div>
-
-			<a [routerLink]="['/form']" style="color:rgb(150,150,150);margin-left:5px;">
-				<b>+</b> 작업 추가
-			</a>  
-
-			<div style="height:10px;"></div>
-
-			<span style="color:rgb(255,144,0);margin-left:5px; cursor:pointer" (click)="finishSimple()">
-				빠른 완료 
-			</span>  
-			<b style="color:rgb(150,150,150);">/</b> 
-			<span style="color:rgb(255,144,0);margin-left:5px; cursor:pointer" (click)="finishWithLog()">
-				로그와 함께 완료 
-			</span>  
-
-			<div style="height:10px;"></div>
-
-			<textarea pInputTextarea autoResize="autoResize" rows="5" cols="30" placeholder="메모장" [(ngModel)]="memo" (keyup)="onChangeMemo()" ></textarea>
-			<br>
-			<span *ngIf="memoUpdatedTime" style="color:gray;font-size:0.9em;">{{memoUpdatedTime | date:'medium'}} 동기화 됨<span>
+			<!-- left list end-->
 
 		`,
     styles: [`
+			#left-list{
+				float:left;	
+				width: 400px;
+			}
+			#right-logs{
+				float:left;	
+				width: 70%;
+			}
+
+			@media screen and (max-width:1024px){
+				#left-list {width:100%;}
+				#right-logs {width:100%;}
+			}
 		`]
 })
 export class ListComponent implements OnInit, onDestroy {
