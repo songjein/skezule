@@ -44,6 +44,11 @@ import { AuthService } from '../../services/auth/auth.service';
 				-moz-box-shadow: 0px 3px 2px -1px rgba(200,200,200,0.75);
 				box-shadow: 0px 3px 2px -1px rgba(200,200,200,0.75);
 			}
+			.last-menu-item-shadow {
+				-webkit-box-shadow: 0px 3px 2px -1px rgba(200,200,200,0.75);
+				-moz-box-shadow: 0px 3px 2px -1px rgba(200,200,200,0.75);
+				box-shadow: 0px 3px 2px -1px rgba(200,200,200,0.75);
+			}
 			.menu-row{
 				position: relative;
 				height: 50px;
@@ -81,7 +86,7 @@ import { AuthService } from '../../services/auth/auth.service';
 			
 			<div id="menu">
 				<a [routerLink]="['/history']" (click)="showMenu()">
-					<div class="menu-row" style="background: rgb(251,251,251); color:rgb(50,50,50);"> 
+					<div class="menu-row" style="background: rgb(241,241,241); color:rgb(50,50,50);"> 
 						<i class="fa fa-check-square-o menu-item" aria-hidden="true" ></i>
 						<span class="menu-item-label">히스토리</span>
 					</div>
@@ -93,19 +98,19 @@ import { AuthService } from '../../services/auth/auth.service';
 					</div>
 				</a>
 				<a [routerLink]="['/user']" (click)="showMenu()">
-					<div class="menu-row" style="background: rgb(251,251,251); color:rgb(50,50,50);"> 
+					<div class="menu-row" style="background: rgb(241,241,241); color:rgb(50,50,50);"> 
 						<i class="fa fa-user-o menu-item" aria-hidden="true" ></i>
 						<span class="menu-item-label">개인정보</span>
 					</div>
 				</a>
 				<a *ngIf="!authService.isLoggedIn()" [routerLink]="['/login']" (click)="showMenu()">
-					<div class="menu-row" style="background: white; color:rgb(50,50,50);"> 
+					<div class="menu-row last-menu-item-shadow" style="background: white; color:rgb(50,50,50);"> 
 						<i class="fa fa-user-o menu-item" aria-hidden="true" ></i>
 						<span class="menu-item-label">로그인</span>
 					</div>
 				</a>
 				<a *ngIf="authService.isLoggedIn()" [routerLink]="['/login']" (click)="logout()">
-					<div class="menu-row" style="background: white; color:rgb(50,50,50);"> 
+					<div class="menu-row last-menu-item-shadow" style="background: white; color:rgb(50,50,50);"> 
 						<i class="fa fa-power-off menu-item" aria-hidden="true" ></i>
 						<span class="menu-item-label">로그아웃</span>
 					</div>
