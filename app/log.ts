@@ -3,4 +3,5 @@ export class Log {
 	body: string;
 	color: string;
 	created_at: Date;
+	todos: string;
 }

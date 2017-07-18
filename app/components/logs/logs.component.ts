@@ -10,13 +10,26 @@ import { Log } from '../../log';
 			<div style="height: 20px;"></div>
 
 			<div *ngFor="let log of apiService.logs">
-				<div class="log-item" [style.background]="log.color">
-					<span style="font-weight: bold"> {{ log.body }} </span> <br>
-					<span style="position:absolute; bottom: 10px; right: 10px; font-size: 0.8em;">{{ log.created_at | date: 'mediumDate'}}</span>
+				<div class="log-item" [style.background]="log.color" [class.expand-log-item]="log.id==clickedLogId" (click)="onClick(log.id)">
+					<!-- 확장 됐을 때 숨기는 영역 -->
+					<div *ngIf="log.id!=clickedLogId">
+						<span style="font-weight: bold"> {{ log.body }} </span> <br>
+						<span style="position:absolute; bottom: 10px; right: 10px; font-size: 0.8em;">{{ log.created_at | date: 'mediumDate'}}</span>
+					</div>
+					<!-- 확장 영역 -->
+					<div *ngIf="log.id==clickedLogId">
+						<span class="bold">목표</span>: {{ log.todos }}<br>
+						<span class="bold">날짜</span>: {{ log.created_at | date: 'mediumDate' }}<br>
+						<span class="bold">로그</span>: {{ log.body }}
+					</div>
 				</div>
 			</div>
 		`,
     styles: [`
+			.bold {
+				font-weight: bold;	
+			}
+
 			.log-item{ 
 				position: relative;
 				float:left;
@@ -26,6 +39,12 @@ import { Log } from '../../log';
 				margin-left: 0px;
 				margin-top: 0px;
 				padding: 10px;
+				overflow:auto;
+			}
+
+			.expand-log-item {
+				width: 360px;	
+				height: 170px;
 			}
 
 			@media screen and (max-width:1024px){
@@ -40,6 +59,8 @@ import { Log } from '../../log';
 		`]
 })
 export class LogsComponent implements OnInit {
+	
+	clickedLogId: number;
 
 	constructor(
 		private router: Router,
@@ -48,6 +69,10 @@ export class LogsComponent implements OnInit {
 
 	getLogs(): void{
 		this.apiService.getLogs();	
+	}
+
+	onClick(id): void{
+		this.clickedLogId = id;	
 	}
 
 	ngOnInit(): void {
