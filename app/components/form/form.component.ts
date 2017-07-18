@@ -26,6 +26,7 @@ import { ApiService } from '../../services/api/api.service';
 			<div class="label" >폰트 굵기(Weight)</div>
 			<p-radioButton name="weight" value="normal" label="보통" [(ngModel)]="weight"></p-radioButton>
 			<p-radioButton name="weight" value="bold" label="굵게" [(ngModel)]="weight"></p-radioButton>
+			<p-radioButton name="weight" value="900" label="매우굵게" [(ngModel)]="weight"></p-radioButton>
 
 			<br>
 			<br>
