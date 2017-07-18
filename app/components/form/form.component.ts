@@ -20,6 +20,13 @@ import { ApiService } from '../../services/api/api.service';
 			<div class="label">반복 날짜(옵션)</div>
 			<p-calendar [(ngModel)]="to" [locale]="kr" [showIcon]="true" readonlyInput="true"></p-calendar> 
 
+			<div class="label" >목표 색깔 선택</div>
+			<input type="color" [(ngModel)]="color">
+
+			<div class="label" >폰트 굵기(Weight)</div>
+			<p-radioButton name="weight" value="normal" label="보통" [(ngModel)]="weight"></p-radioButton>
+			<p-radioButton name="weight" value="bold" label="굵게" [(ngModel)]="weight"></p-radioButton>
+
 			<br>
 			<br>
 
@@ -42,6 +49,8 @@ export class FormComponent {
 	to: Date;
 	goal: string = "";
 	category: string = "";
+	color: string = "#000000";
+	weight: string = "normal"; 
 
 	kr: any;
 
@@ -58,7 +67,7 @@ export class FormComponent {
 			return;
 		}
 
-		this.apiService.createTodo(this.goal, this.from, this.to, this.category)
+		this.apiService.createTodo(this.goal, this.from, this.to, this.category, this.color, this.weight)
 			.then(()=>{
 				this.router.navigate(['/']);
 			});

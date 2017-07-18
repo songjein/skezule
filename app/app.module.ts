@@ -33,6 +33,7 @@ import {
 	DialogModule,
 	InputTextareaModule,
 	MessagesModule,
+	RadioButtonModule,
 } from 'primeng/primeng';
 
 @NgModule({
@@ -50,6 +51,7 @@ import {
 			DialogModule,
 			InputTextareaModule,
 			MessagesModule,
+			RadioButtonModule,
     ],
     declarations: [
 			AppComponent,
