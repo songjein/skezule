@@ -86,11 +86,11 @@ export class ApiService{
 			.catch(this.handleError);
 	}
 
-	completeTodos(selectedTodos: string, log: string): Promise<void>{
+	completeTodos(selectedTodos: string, log: string, color: string): Promise<void>{
 		// http://stackoverflow.com/questions/39607971/angular-2-http-delete-send-json-in-body
 		return this.http
 			.post(this.baseUrl + "/complete"
-				,JSON.stringify({selectedTodos: selectedTodos,log: log})
+				,JSON.stringify({selectedTodos: selectedTodos, log: log, color: color})
 				,{headers: this.authService.headers})
 			.toPromise()
 			.then(res => {

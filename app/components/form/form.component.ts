@@ -19,7 +19,7 @@ import { ApiService } from '../../services/api/api.service';
 
 			<div class="label">반복 날짜(옵션)</div>
 			<p-calendar [(ngModel)]="to" [locale]="kr" [showIcon]="true" readonlyInput="true"></p-calendar> 
-			
+
 			<br>
 			<br>
 

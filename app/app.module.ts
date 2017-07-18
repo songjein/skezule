@@ -21,7 +21,6 @@ import { ApiService } from './services/api/api.service';
 import { AuthService } from './services/auth/auth.service';
 import { CanActivateViaAuthGuard } from './services/guards/can-activate-via-auth-guard.service';
 
-
 /**
  * primeng
  */

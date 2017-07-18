@@ -26,6 +26,13 @@ import 'rxjs/add/operator/switchMap';
 
 			<div style="height:10px"></div>
 
+			<div style="color:rgb(150,150,150); margin: 5px 0;">
+				로그 색깔 선택
+			</div>
+			<input type="color" [(ngModel)]="color">
+
+			<div style="height:10px"></div>
+
 			<button pButton type="button" label="완료하기" class="ui-button-secondary" (click)="onclick()" ></button>
 
 			<a [routerLink]="['/']"><button pButton type="button" label="취소하기" class="ui-button-secondary" ></button></a>
@@ -42,6 +49,8 @@ export class CompleteComponent implements OnInit {
 
 	log: string = "";
 
+	color: string = "#eeeeee";
+
 	constructor(
 		private route: ActivatedRoute,
 		private router: Router,
@@ -55,7 +64,7 @@ export class CompleteComponent implements OnInit {
 		}
 
 		this.apiService	
-			.completeTodos(this.selectedTodosIds, this.log)
+			.completeTodos(this.selectedTodosIds, this.log, this.color)
 			.then(()=>{
 				this.router.navigate(['/']);
 			})

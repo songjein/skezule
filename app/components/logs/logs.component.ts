@@ -10,7 +10,7 @@ import { Log } from '../../log';
 			<div style="height: 20px;"></div>
 
 			<div *ngFor="let log of apiService.logs">
-				<div class="log-item" >
+				<div class="log-item" [style.background]="log.color">
 					<span style="font-weight: bold"> {{ log.body }} </span> <br>
 					<span style="position:absolute; bottom: 10px; right: 10px; font-size: 0.8em;">{{ log.created_at | date: 'mediumDate'}}</span>
 				</div>
@@ -22,8 +22,6 @@ import { Log } from '../../log';
 				float:left;
 				width: 180px; 
 				height: 70px; 
-				/* 유저가 색 선택하게*/
-				background: rgba(200,200,200,0.5); 
 				margin: 10px; 
 				margin-left: 0px;
 				margin-top: 0px;
