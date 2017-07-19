@@ -43,7 +43,7 @@ import { Log } from '../../log';
 			}
 
 			.expand-log-item {
-				width: 360px;	
+				width: 390px;	
 				height: 170px;
 			}
 

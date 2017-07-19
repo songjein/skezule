@@ -25,7 +25,7 @@ import { AuthService } from '../../services/auth/auth.service';
 
 			<div style="height:10px;"></div>
 
-			<input type="text" pInputText [(ngModel)]="pw" size="30" placeholder="비밀번호" />
+			<input type="password" pInputText [(ngModel)]="pw" size="30" placeholder="비밀번호" />
 
 			<div style="height:10px;"></div>
 
