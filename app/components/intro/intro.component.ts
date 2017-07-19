@@ -10,7 +10,7 @@ import { ApiService } from '../../services/api/api.service';
 				<div style="height:5px;"></div>
 
 				<div id="container">
-					<img src="/intro.jpg" style="width: 100%; height: 500px; object-fit: cover; object-position: 35% 50%;"/>
+					<img src="/intro.jpg" id="bgimg"/>
 					<div id="layer1"></div>
 					<div id="layer2">
 						<div style="font-size: 2em; margin-bottom: 20px;">
@@ -74,6 +74,11 @@ import { ApiService } from '../../services/api/api.service';
 			#container{
 				position:relative;	
 			}
+			#bgimg {
+				width: 100%; height: 500px; 
+				object-fit: cover; 
+				object-position: 35% 50%;
+			}
 			#layer1{
 				position: absolute;
 				top:0;
@@ -110,6 +115,12 @@ import { ApiService } from '../../services/api/api.service';
 			@media (max-width: 1200px){
 				#adjust{
 					margin: -75px -10px;	
+				}
+				#bgimg {
+					height: 400px;	
+				}
+				#layer1{
+					height: 400px;	
 				}
 				#layer2{
 					right: 10px;
