@@ -70,7 +70,7 @@ export class FormComponent {
 
 		this.apiService.createTodo(this.goal, this.from, this.to, this.category, this.color, this.weight)
 			.then(()=>{
-				this.router.navigate(['/']);
+				this.router.navigate(['/list']);
 			});
 	}
 
