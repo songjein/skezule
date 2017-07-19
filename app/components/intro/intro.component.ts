@@ -14,8 +14,8 @@ import { ApiService } from '../../services/api/api.service';
 					<div id="layer1"></div>
 					<div id="layer2">
 						<div style="font-size: 2em; margin-bottom: 20px;">
-							<b>SkezLog</b>는<br>
-							<span style="white-space: nowrap"><b>Todo-List</b> 기반의</span> <span style="white-space:nowrap"><b>Blog</b>입니다.</span>
+							<b style="color:rgba(240,173,78)">스케쥴로그</b>는<br>
+							<span style="white-space: nowrap"><b>Todo-List</b> 기반의</span> <span style="white-space:nowrap"><b>Blog</b>입니다</span>
 						</div>
 
 						언제나 쉽게 계획을 세우고, <br>
@@ -135,7 +135,7 @@ export class IntroComponent implements OnInit {
 	){}
 
 	onclick(){
-		alert("start");	
+		this.router.navigate(['/list']);
 	}
 
 	ngOnInit(): void {

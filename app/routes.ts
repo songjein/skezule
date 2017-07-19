@@ -12,7 +12,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CanActivateViaAuthGuard } from './services/guards/can-activate-via-auth-guard.service';
 
 export const routes: Route[] = [
-    { path: '', pathMatch: 'full', component: ListComponent, canActivate: [CanActivateViaAuthGuard] },
+    { path: '', pathMatch: 'full', component: IntroComponent },
     { path: 'form', component: FormComponent, canActivate: [CanActivateViaAuthGuard]  },
     { path: 'list', component: ListComponent, canActivate: [CanActivateViaAuthGuard] },
     { path: 'stat', component: StatComponent, canActivate: [CanActivateViaAuthGuard]  },

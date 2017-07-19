@@ -75,7 +75,7 @@ import { AuthService } from '../../services/auth/auth.service';
 		`],
     template: `
 			<div id="nav">
-				<a [routerLink]="['/']" >
+				<a [routerLink]="['/list']" >
 					<img id="logo" src="logo.png">
 				</a>
 
