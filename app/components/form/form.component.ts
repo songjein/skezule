@@ -14,7 +14,7 @@ import { ApiService } from '../../services/api/api.service';
 			<div class="label">카테고리</div>
 			<input type="text" pInputText [(ngModel)]="category" size="30"/>
 
-			<div class="label">날짜</div>
+			<div class="label">시작 날짜</div>
 			<p-calendar [(ngModel)]="from" [locale]="kr" [showIcon]="true" readonlyInput="true"></p-calendar> 
 
 			<div class="label">반복 날짜(옵션)</div>
