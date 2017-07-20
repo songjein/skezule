@@ -33,9 +33,9 @@ import { Todo } from '../../todo';
 
 				<div *ngFor="let todo of apiService.todos" style="margin-bottom:10px;" >
 					<p-checkbox *ngIf="todo.tag_list.length == 0" class="todo" name="todolist" value="{{todo.id}}" 
-							label="{{todo.goal}}" [(ngModel)]="selectedItems" [style.color]="todo.color" [style.fontWeight]="todo.weight"></p-checkbox>
+							label="{{todo.goal}} - {{todo.rate}}%" [(ngModel)]="selectedItems" [style.color]="todo.color" [style.fontWeight]="todo.weight"></p-checkbox>
 					<p-checkbox *ngIf="todo.tag_list.length > 0" class="todo" name="todolist" value="{{todo.id}}" 
-							label="[{{todo.tag_list}}] {{todo.goal}}" [(ngModel)]="selectedItems" [style.color]="todo.color" [style.fontWeight]="todo.weight"></p-checkbox>
+							label="[{{todo.tag_list}}] {{todo.goal}} - {{todo.rate}}%" [(ngModel)]="selectedItems" [style.color]="todo.color" [style.fontWeight]="todo.weight"></p-checkbox>
 				</div>
 				
 				<div style="height:5px;"></div>

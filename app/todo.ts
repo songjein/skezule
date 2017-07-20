@@ -6,4 +6,5 @@ export class Todo {
 	isCompleted: boolean;
 	log_id: number;
 	tag_list: string[];
+	rate: number;
 }
