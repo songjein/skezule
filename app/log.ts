@@ -4,4 +4,5 @@ export class Log {
 	color: string;
 	created_at: Date;
 	todos: string;
+	tag_list: string[];
 }

@@ -8,9 +8,24 @@ import { Log } from '../../log';
     selector: 'logs',
     template: `
 			<div style="height: 20px;"></div>
+			<div id="tag-filter">
+				<span style="font-weight:bold">
+					태그 필터
+					<span class="tag" style="color:red" (click)="filterInit()">[초기화]</span>  
+				</span>:
+				<!-- ngInit에서 getTags 호출해놓은 상태 -->
+				<span *ngFor="let tag of apiService.tags; let i=index">
+					<span style="white-space:nowrap">
+						<span class="tag" (click)="tagClick(tag)">&nbsp;{{tag}}</span>
+						<span *ngIf="i<apiService.tags.length-1"> / </span>
+					</span>
+				</span>
+			</div>
+			<div style="height: 10px;"></div>
 
 			<div *ngFor="let log of apiService.logs">
-				<div class="log-item" [style.background]="log.color" [class.expand-log-item]="log.id==clickedLogId" (click)="onClick(log.id)">
+				<!-- 만약 filterMode가 아닐 때는 무조건 보여주고, filter 모드일 때는 일치하는 것만-->
+				<div *ngIf="!filterMode || (log.tag_list.indexOf(selectedTag) > -1)" class="log-item" [style.background]="log.color" [class.expand-log-item]="log.id==clickedLogId" (click)="onClick(log.id)">
 					<!-- 확장 됐을 때 숨기는 영역 -->
 					<div *ngIf="log.id!=clickedLogId">
 						<span style="font-weight: bold"> {{ log.body }} </span> <br>
@@ -18,9 +33,10 @@ import { Log } from '../../log';
 					</div>
 					<!-- 확장 영역 -->
 					<div *ngIf="log.id==clickedLogId">
-						<span class="bold">목표</span>: {{ log.todos }}<br>
-						<span class="bold">날짜</span>: {{ log.created_at | date: 'mediumDate' }}<br>
-						<span class="bold">로그</span>: {{ log.body }}
+						<!--<span class="bold">목표</span>: {{ log.todos }}<br>-->
+						<strong>목표</strong> <span [innerHTML]="log.todos"></span>
+						<strong>날짜</strong>: {{ log.created_at | date: 'mediumDate' }}<br>
+						<strong>로그</strong>: {{ log.body }}
 					</div>
 				</div>
 			</div>
@@ -28,6 +44,12 @@ import { Log } from '../../log';
     styles: [`
 			.bold {
 				font-weight: bold;	
+			}
+
+			#tag-filter {
+			}
+			.tag{
+				cursor: pointer;	
 			}
 
 			.log-item{ 
@@ -61,6 +83,9 @@ import { Log } from '../../log';
 export class LogsComponent implements OnInit {
 	
 	clickedLogId: number;
+	
+	filterMode: boolean = false;
+	selectedTag: string;
 
 	constructor(
 		private router: Router,
@@ -71,11 +96,26 @@ export class LogsComponent implements OnInit {
 		this.apiService.getLogs();	
 	}
 
+	getTags(): void{
+		this.apiService.getTags();	
+	}
+
 	onClick(id): void{
 		this.clickedLogId = id;	
 	}
 
+	tagClick(tag): void {
+		this.selectedTag = tag;
+		this.filterMode = true;
+	}
+
+	filterInit(): void {
+		this.filterMode = false;	
+	}
+
+
 	ngOnInit(): void {
 		this.getLogs();
+		this.getTags();
 	}
 }

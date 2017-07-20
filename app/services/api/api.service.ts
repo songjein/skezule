@@ -16,6 +16,7 @@ export class ApiService{
 	// list shared by other components
 	todos: Todo[];
 	logs: Log[];
+	tags: string[];
 
 	constructor(
 		private http: Http,
@@ -41,6 +42,16 @@ export class ApiService{
 			.toPromise()
 			.then(response => { 
 				this.todos = response.json() as Todo[];
+			})
+			.catch(this.handleError);
+	}
+
+	getTags(): Promise<void> {
+		return this.http.get(this.baseUrl + "/tags"
+			, {headers: this.authService.headers})
+			.toPromise()
+			.then(response => {
+				this.tags= response.json();
 			})
 			.catch(this.handleError);
 	}
