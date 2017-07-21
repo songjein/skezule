@@ -9,12 +9,6 @@ import { Log } from '../../log';
     template: `
 			<div style="height: 20px;"></div>
 
-			<!-- 서버에서 응답 오기 전에 판단하는듯? -->
-			<div *ngIf="apiService.logs?.length == 0">
-				오늘의 할일을 달성하고,<br>
-				로그를 남겨보세요 :)
-			</div>
-
 			<div *ngIf="apiService.tags?.length > 0" id="tag-filter">
 				<span style="font-weight:bold">
 					태그 필터
@@ -28,7 +22,14 @@ import { Log } from '../../log';
 					</span>
 				</span>
 			</div>
+
 			<div style="height: 10px;"></div>
+
+			<!-- 서버에서 응답 오기 전에 판단하는듯? -->
+			<div *ngIf="apiService.logs?.length == 0">
+				오늘의 할일을 달성하고,<br>
+				로그를 남겨보세요 :)
+			</div>
 			
 			<div *ngFor="let log of apiService.logs">
 				<!-- 만약 filterMode가 아닐 때는 무조건 보여주고, filter 모드일 때는 일치하는 것만-->
