@@ -8,7 +8,14 @@ import { Log } from '../../log';
     selector: 'logs',
     template: `
 			<div style="height: 20px;"></div>
-			<div id="tag-filter">
+
+			<!-- 서버에서 응답 오기 전에 판단하는듯? -->
+			<div *ngIf="apiService.logs?.length == 0">
+				오늘의 할일을 달성하고,<br>
+				로그를 남겨보세요 :)
+			</div>
+
+			<div *ngIf="apiService.tags?.length > 0" id="tag-filter">
 				<span style="font-weight:bold">
 					태그 필터
 					<span class="tag" style="color:red" (click)="filterInit()">[초기화]</span>  
@@ -22,7 +29,7 @@ import { Log } from '../../log';
 				</span>
 			</div>
 			<div style="height: 10px;"></div>
-
+			
 			<div *ngFor="let log of apiService.logs">
 				<!-- 만약 filterMode가 아닐 때는 무조건 보여주고, filter 모드일 때는 일치하는 것만-->
 				<div *ngIf="!filterMode || (log.tag_list.indexOf(selectedTag) > -1)" class="log-item" [style.background]="log.color" [class.expand-log-item]="log.id==clickedLogId" (click)="onClick(log.id)">

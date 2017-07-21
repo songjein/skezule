@@ -42,6 +42,7 @@ export class ApiService{
 			.toPromise()
 			.then(response => { 
 				this.todos = response.json() as Todo[];
+				console.log("todos", this.todos);
 			})
 			.catch(this.handleError);
 	}
@@ -51,7 +52,8 @@ export class ApiService{
 			, {headers: this.authService.headers})
 			.toPromise()
 			.then(response => {
-				this.tags= response.json();
+				this.tags = response.json();
+				console.log("tags", this.tags);
 			})
 			.catch(this.handleError);
 	}
@@ -62,6 +64,7 @@ export class ApiService{
 			.toPromise()
 			.then(response => { 
 				this.todos = response.json() as Todo[];
+				console.log("history", this.todos);
 			})
 			.catch(this.handleError);
 	}
@@ -72,6 +75,7 @@ export class ApiService{
 			.toPromise()
 			.then(response => {
 				this.logs = response.json() as Log[];	
+				console.log("logs", this.logs);
 			})
 			.catch(this.handleError);
 	}
