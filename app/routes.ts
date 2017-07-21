@@ -8,6 +8,7 @@ import { UserComponent } from './components/user/user.component';
 import { HistoryComponent } from './components/history/history.component';
 import { IntroComponent } from './components/intro/intro.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 import { CanActivateViaAuthGuard } from './services/guards/can-activate-via-auth-guard.service';
 
@@ -21,6 +22,7 @@ export const routes: Route[] = [
     { path: 'history', component: HistoryComponent, canActivate: [CanActivateViaAuthGuard]  },
     { path: 'intro', component: IntroComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
 ];
 
 export const routing = RouterModule.forRoot(routes, { useHash: true });

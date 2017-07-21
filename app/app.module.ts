@@ -16,6 +16,7 @@ import { UserComponent } from "./components/user/user.component";
 import { HistoryComponent } from "./components/history/history.component";
 import { IntroComponent } from "./components/intro/intro.component";
 import { LogsComponent } from "./components/logs/logs.component";
+import { RegisterComponent } from "./components/register/register.component";
 
 import { ApiService } from './services/api/api.service';
 import { AuthService } from './services/auth/auth.service';
@@ -65,6 +66,7 @@ import {
 			IntroComponent,
 			LoginComponent,
 			LogsComponent,
+			RegisterComponent,
     ],
 
 		providers: [

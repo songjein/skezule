@@ -31,6 +31,8 @@ import { AuthService } from '../../services/auth/auth.service';
 
 			<button pButton type="button" label="로그인" class="ui-button-secondary" (click)="login()" ></button>
 
+			<button pButton type="button" label="회원가입" class="ui-button-secondary" (click)="register()" ></button>
+
 		`,
     styles: [`
 		`]
@@ -59,5 +61,9 @@ export class LoginComponent implements OnInit{
 		}).catch((error) => {
 			alert(error);	
 		})
+	}
+
+	register(): void {
+		this.router.navigate(['/register']);
 	}
 }

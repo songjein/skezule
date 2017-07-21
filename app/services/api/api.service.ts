@@ -17,6 +17,7 @@ export class ApiService{
 	todos: Todo[];
 	logs: Log[];
 	tags: string[];
+	errors: string[];
 
 	constructor(
 		private http: Http,
@@ -113,6 +114,20 @@ export class ApiService{
 			})
 			.catch(this.handleError);
 	}
+
+	createUser(user_id: string, name: string, password: string, password_confirmation: string): Promise<void>{
+		return this.http
+			.post(this.baseUrl + "/users"
+				,JSON.stringify({user_id: user_id, name: name, password: password, password_confirmation: password_confirmation})
+				,{headers: this.authService.headers})
+			.toPromise()
+			.then(res => {
+				return res.json();
+			})
+			.catch(this.handleError);
+	}
+
+
 
 	updateMemo(memo: string): Promise<any>{
 		return this.http
